@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --background: #dbdbdb;
+  --charword: 18;
+}
+.container {
+  background-color: var(--background);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+h1 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  width: max-content;
+  font-family: "Source Code Pro", monospace;
+}
+
+h1::before,
+h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+h1::before {
+  background-color: var(--background);
+
+  animation: textwriter 6s steps(var(--charword)) infinite forwards;
+}
+@keyframes textwriter {
+  to {
+    left: 100%;
+    border-left-color: rgba(0, 0, 0, 0.37);
+  }
+}
+h1::after {
+  animation: textwriter 6s steps(var(--charword)) infinite forwards,
+    after 0.745s steps(var(--charword)) infinite;
+  width: 0.125em;
+  background: black;
+}
+
+@keyframes after {
+  to {
+    background-color: transparent;
+  }
+}
